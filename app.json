@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "desafioApp",
+    "slug": "desafioApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.juliast.desafioApp",
+      "runtimeVersion": "1.0.0"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "expo": {
+      "plugins": [
+        [
+          "expo-location",
+          {
+            "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+          },
+          "@rnmapbox/maps",
+          {
+            "RNMapboxMapsImpl": "mapbox",
+            "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiZGFuaWxvbWlndWVsMTQ4NSIsImEiOiJjbGZyMGI4YmMwMGt3M3VrOHIwYzNyZ2VhIn0.uu2FELZlU70-C20DvGNl7w"
+          }
+        ]
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4488e65b-6bbf-4cff-a177-a1bfc9331c7c"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/4488e65b-6bbf-4cff-a177-a1bfc9331c7c"
+    }
+  }
+}
