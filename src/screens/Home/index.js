@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef  } from 'react';
-import { styles } from './style';
+import { styles } from '../Home/style.js';
 import { Alert, View } from 'react-native';
 import MapboxGL,  { UserLocation } from "@rnmapbox/maps";
 import  {  getCurrentPositionAsync,
@@ -8,8 +8,8 @@ import  {  getCurrentPositionAsync,
           hasServicesEnabledAsync,
           LocationAccuracy,
           enableNetworkProviderAsync }   from 'expo-location';
-import  ButtomCustomer from '../../components/ButtomCustomer';
-import MapLocation from '../../components/MapLocation';
+import   ButtonCustomer  from '../../components/ButtonCustomer';
+import  MapLocation  from '../../components/MapLocation';
 
 
 MapboxGL.setWellKnownTileServer('Mapbox');
@@ -121,6 +121,10 @@ export default function Home() {
     };
   }, []);
 
+//quando o botão for clicado, irá atualizar o estado 'showMap'
+  function handleShowMapClick() {
+    setShowMap(true);
+  }
  
 
   return(
@@ -136,7 +140,7 @@ export default function Home() {
                 
           ></MapboxGL.MapView>
 
-          < MapLocation />
+          {/* < MapLocation /> */}
 
           <MapboxGL.Camera
               zoomLevel={11}
@@ -145,36 +149,34 @@ export default function Home() {
             />
 
 
-        <View
-          style={{
-            alignItems: "center",
-            position: "absolute",
-            marginTop: 130,
-            right: 50,
-            width: 60,
-            height: 70,
-            justifyContent: "space-between",
-            }}
-        >
-            
-        <ButtonCustomer
-            iconName="layers"
-            iconPackage="Feather"
-            onPress={() => {
-              setModalView(true);
+      <View
+            style={{
+              alignItems: "center",
+              position: "absolute",
+              marginTop: 130,
+              right: 50,
+              width: 60,
+              height: 70,
+              justifyContent: "space-between",
+              }}
+          >
+          
 
-              // goToBounds();
-            }}
-        />
-
-        <ButtonCustomer
+          <ButtonCustomer
             iconName="gps-fixed"
             iconPackage="MaterialIcons"
-            onPress={async () => {
-              await modalPermission(location);
-            }}  
-        />
-        </View>
+            onPress= {async () => {
+              await  modalPermission(location);
+              handleShowMapClick(); 
+            }}
+          >
+              
+          </ButtonCustomer>
+
+        {/* quando o botão for clicado o componente será renderizado */}
+          {showMap && <MapLocation />}
+      </View>
+
     </View>
   )
 }

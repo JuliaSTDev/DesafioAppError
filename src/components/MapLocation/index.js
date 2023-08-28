@@ -6,7 +6,8 @@ import * as Location from 'expo-location';
 export function App() {
     const [userLocation, setUserLocation] = useState(null);
 
-    //função responsavel por obter a localização do usuário
+    //função responsavel por obter a localização do usuário,
+    //retornando as coordenadas de latitude e longitude
     async  function getUserLocation() {
         
             
@@ -30,7 +31,7 @@ export function App() {
     
     
 
-    //função responsável por buscar a localização do usuário.
+    //responsável por buscar a localização do usuário.
     useEffect(() => {
         async function fetchUserLocation() {
             const location = await getUserLocation();
@@ -41,7 +42,7 @@ export function App() {
 
 
     //função responsavel por centralizar o usário no mapa
-
+    //usando o cameraRef para acessar o elemento 'camera' do MapboxGL
     function centerUser(cameraRef, userLocation) {
         cameraRef.current.setCamera({
         centerCoordinate: [userLocation.longitude, userLocation.latitude],
@@ -59,6 +60,8 @@ export function App() {
             }
         }, [userLocation]);
 
+
+        //a referência camera é passada para o componente usando a props ref
         return (
         <MapboxGL.MapView>
             <MapboxGL.Camera ref={camera} />

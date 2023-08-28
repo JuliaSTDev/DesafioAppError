@@ -8,9 +8,10 @@ export default function CentralizeLocation({ onPress, iconName, iconPackage }) {
 
   return (
     <View>
-      <TouchableOpacity style={[styles.button, styles.menu]}r onPress={onPress}>
+     <TouchableOpacity style={[styles.button, styles.menu]} onPress={onPress}>
         <Icon name={iconName} size={25} color="#001C27" />
       </TouchableOpacity>
     </View>
   );
 }
+
