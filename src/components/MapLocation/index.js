@@ -3,7 +3,7 @@ import MapboxGL  from "@rnmapbox/maps";
 import * as Location from 'expo-location';
 
 
-export function App() {
+export default  function App() {
     const [userLocation, setUserLocation] = useState(null);
 
     //função responsavel por obter a localização do usuário,
