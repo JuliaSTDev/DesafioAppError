@@ -59,8 +59,15 @@ export default function Home() {
       const getLocation = () => {
         Geolocation.getCurrentPosition(
           (position) => {
-            setCurrentLatitude(position.coords.currentLatitude);
-            setCurrentLongitude(position.coords.currentLongitude);
+            let text = JSON.stringify(position);
+            let location = (JSON.parse(text));
+           
+            console.log('TEX: ', currentLatitude,currentLongitude);
+            setCurrentLatitude(position.coords.latitude);
+            setCurrentLongitude(position.coords.longitude);
+            latitude = currentLatitude.coords.latitude;
+            longitude = currentLongitude.coords.longitude;
+            
           },
           (error) => alert(error.message), 
           { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 } 
@@ -107,6 +114,9 @@ export default function Home() {
               setErrorMsg('Permission to access location was denied');
             }
         }
+
+
+
           //quando o botão for clicado, irá atualizar o estado 'showMap'
     function handleShowMapClick() {
       setShowMap(true);
@@ -117,11 +127,16 @@ export default function Home() {
 // aparecer o ponto azul do usuário
   const PointMap = () => {
     return (
+
+
+
       <MapboxGL.PointAnnotation
         key="pointAnnotation"
         id="pointAnnotation"
         coordinate= {[currentLongitude, currentLatitude]}
       >
+
+       
       <View  style={{ 
           height: 15,  
           width: 15,  
